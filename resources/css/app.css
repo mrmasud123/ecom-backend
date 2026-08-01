@@ -880,3 +880,6 @@ pre[class*='language-'] {
     margin-right: -60px !important;
   }
 }
+html.dark body {
+    background-color: #111827; /* same as gray-900 */
+}
