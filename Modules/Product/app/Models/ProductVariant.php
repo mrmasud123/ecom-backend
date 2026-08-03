@@ -12,7 +12,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class ProductVariant extends Model implements HasMedia
 {
     use InteractsWithMedia;
-
+    protected $fillable = ['product_id', 'sku', 'price', 'compare_price', 'quantity', 'is_active'];
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('image')->singleFile();

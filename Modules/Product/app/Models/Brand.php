@@ -12,7 +12,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Brand extends Model implements HasMedia
 {
     use InteractsWithMedia;
-
+    protected $fillable = ['name', 'slug', 'logo', 'description', 'is_active'];
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('logo')->singleFile();

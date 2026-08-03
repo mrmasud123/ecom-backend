@@ -1,0 +1,406 @@
+.
+|-- .editorconfig
+|-- .env
+|-- .env.example
+|-- .gitattributes
+|-- .gitignore
+|-- .idea
+|   |-- .gitignore
+|   |-- laravel-idea.xml
+|   |-- modules.xml
+|   |-- php-test-framework.xml
+|   |-- php.xml
+|   |-- phpunit.xml
+|   |-- sellzy-backend.iml
+|   |-- vcs.xml
+|   |-- webResources.xml
+|   `-- workspace.xml
+|-- Modules
+|   `-- Product
+|       |-- app
+|       |   |-- Http
+|       |   |   `-- Controllers
+|       |   |       |-- .gitkeep
+|       |   |       `-- ProductController.php
+|       |   |-- Models
+|       |   |   |-- Attribute.php
+|       |   |   |-- AttributeValue.php
+|       |   |   |-- Brand.php
+|       |   |   |-- Category.php
+|       |   |   |-- Product.php
+|       |   |   `-- ProductVariant.php
+|       |   `-- Providers
+|       |       |-- .gitkeep
+|       |       |-- EventServiceProvider.php
+|       |       |-- ProductServiceProvider.php
+|       |       `-- RouteServiceProvider.php
+|       |-- composer.json
+|       |-- config
+|       |   |-- .gitkeep
+|       |   `-- config.php
+|       |-- database
+|       |   |-- factories
+|       |   |   `-- .gitkeep
+|       |   |-- migrations
+|       |   |   |-- .gitkeep
+|       |   |   |-- 2026_08_01_093954_create_categories_table.php
+|       |   |   |-- 2026_08_01_094023_create_brands_table.php
+|       |   |   |-- 2026_08_01_094025_create_attributes_table.php
+|       |   |   |-- 2026_08_01_094026_create_attribute_values_table.php
+|       |   |   |-- 2026_08_01_094029_create_products_table.php
+|       |   |   |-- 2026_08_01_094031_create_category_product_table.php
+|       |   |   |-- 2026_08_01_094034_create_product_variants_table.php
+|       |   |   `-- 2026_08_01_094235_create_attribute_value_product_variant_table.php
+|       |   `-- seeders
+|       |       |-- .gitkeep
+|       |       `-- ProductDatabaseSeeder.php
+|       |-- module.json
+|       |-- package.json
+|       |-- resources
+|       |   |-- assets
+|       |   |   |-- .gitkeep
+|       |   |   |-- js
+|       |   |   |   `-- product-index.js
+|       |   |   `-- sass
+|       |   |       `-- app.scss
+|       |   `-- views
+|       |       |-- .gitkeep
+|       |       |-- components
+|       |       |   `-- layouts
+|       |       |       `-- master.blade.php
+|       |       `-- index.blade.php
+|       |-- routes
+|       |   |-- .gitkeep
+|       |   |-- api.php
+|       |   `-- web.php
+|       |-- tests
+|       |   |-- Feature
+|       |   |   `-- .gitkeep
+|       |   `-- Unit
+|       |       `-- .gitkeep
+|       `-- vite.config.js
+|-- README.md
+|-- app
+|   |-- Helpers
+|   |   `-- MenuHelper.php
+|   |-- Http
+|   |   `-- Controllers
+|   |       |-- Auth
+|   |       |   `-- AuthController.php
+|   |       |-- Controller.php
+|   |       |-- DashboardController.php
+|   |       `-- SidebarController.php
+|   |-- Models
+|   |   `-- User.php
+|   |-- Providers
+|   |   `-- AppServiceProvider.php
+|   |-- Support
+|   |   `-- Media
+|   |       `-- ModulePathGenerator.php
+|   `-- View
+|       `-- Components
+|           |-- CalenderArea.php
+|           |-- common
+|           |   |-- CommonGridShape.php
+|           |   |-- ComponentCard.php
+|           |   |-- DropdownMenu.php
+|           |   |-- PageBreadcrumb.php
+|           |   |-- Preloader.php
+|           |   |-- TableDropdown.php
+|           |   `-- ThemeToggle.php
+|           |-- ecommerce
+|           |   |-- CustomerDemographic.php
+|           |   |-- EcommerceMetrics.php
+|           |   |-- MonthlySale.php
+|           |   |-- MonthlyTarget.php
+|           |   |-- RecentOrders.php
+|           |   `-- StatisticsChart.php
+|           |-- form
+|           |   |-- DatePicker.php
+|           |   |-- FormElements
+|           |   |   |-- CheckboxComponent.php
+|           |   |   |-- DefaultInputs.php
+|           |   |   |-- Dropzone.php
+|           |   |   |-- FileInputExample.php
+|           |   |   |-- InputGroup.php
+|           |   |   |-- InputStates.php
+|           |   |   |-- RadioButtons.php
+|           |   |   |-- SelectInputs.php
+|           |   |   |-- TextAreaInputs.php
+|           |   |   `-- ToggleSwitch.php
+|           |   |-- input
+|           |   |   `-- Radio.php
+|           |   `-- select
+|           |       `-- MultipleSelect.php
+|           |-- header
+|           |   |-- NotificationDropdown.php
+|           |   `-- UserDropdown.php
+|           |-- profile
+|           |   |-- AddressCard.php
+|           |   |-- PersonalInfoCard.php
+|           |   `-- ProfileCard.php
+|           |-- tables
+|           |   `-- BasicTables
+|           |       |-- BasicTablesFive.php
+|           |       |-- BasicTablesFour.php
+|           |       |-- BasicTablesOne.php
+|           |       |-- BasicTablesThree.php
+|           |       `-- BasicTablesTwo.php
+|           `-- ui
+|               |-- Alert.php
+|               |-- Avatar.php
+|               |-- Badge.php
+|               |-- Button.php
+|               |-- Modal.php
+|               `-- YoutubeEmbed.php
+|-- artisan
+|-- composer.json
+|-- composer.lock
+|-- config
+|   |-- app.php
+|   |-- auth.php
+|   |-- cache.php
+|   |-- database.php
+|   |-- filesystems.php
+|   |-- logging.php
+|   |-- mail.php
+|   |-- media-library.php
+|   |-- modules.php
+|   |-- queue.php
+|   |-- sanctum.php
+|   |-- services.php
+|   `-- session.php
+|-- database
+|   |-- .gitignore
+|   |-- factories
+|   |   `-- UserFactory.php
+|   |-- migrations
+|   |   |-- 0001_01_01_000000_create_users_table.php
+|   |   |-- 0001_01_01_000001_create_cache_table.php
+|   |   |-- 0001_01_01_000002_create_jobs_table.php
+|   |   |-- 2026_08_01_094719_create_media_table.php
+|   |   |-- 2026_08_01_103356_add_phone_number_to_users_table.php
+|   |   `-- 2026_08_01_105950_create_personal_access_tokens_table.php
+|   `-- seeders
+|       `-- DatabaseSeeder.php
+|-- dump.rdb
+|-- modules_statuses.json
+|-- package-lock.json
+|-- package.json
+|-- phpunit.xml
+|-- resources
+|   |-- css
+|   |   `-- app.css
+|   |-- js
+|   |   |-- app.js
+|   |   |-- bootstrap.js
+|   |   `-- components
+|   |       |-- calendar-init.js
+|   |       |-- chart
+|   |       |   |-- chart-1.js
+|   |       |   |-- chart-13.js
+|   |       |   |-- chart-2.js
+|   |       |   |-- chart-3.js
+|   |       |   |-- chart-6.js
+|   |       |   `-- chart-8.js
+|   |       `-- map.js
+|   `-- views
+|       |-- auth
+|       |   |-- signin.blade.php
+|       |   `-- signup.blade.php
+|       |-- components
+|       |   |-- calender-area.blade.php
+|       |   |-- common
+|       |   |   |-- common-grid-shape.blade.php
+|       |   |   |-- component-card.blade.php
+|       |   |   |-- dropdown-menu.blade.php
+|       |   |   |-- page-breadcrumb.blade.php
+|       |   |   |-- preloader.blade.php
+|       |   |   |-- table-dropdown.blade.php
+|       |   |   `-- theme-toggle.blade.php
+|       |   |-- ecommerce
+|       |   |   |-- customer-demographic.blade.php
+|       |   |   |-- ecommerce-metrics.blade.php
+|       |   |   |-- monthly-sale.blade.php
+|       |   |   |-- monthly-target.blade.php
+|       |   |   |-- recent-orders.blade.php
+|       |   |   `-- statistics-chart.blade.php
+|       |   |-- form
+|       |   |   |-- date-picker.blade.php
+|       |   |   |-- form-elements
+|       |   |   |   |-- checkbox-component.blade.php
+|       |   |   |   |-- default-inputs.blade.php
+|       |   |   |   |-- dropzone.blade.php
+|       |   |   |   |-- file-input-example.blade.php
+|       |   |   |   |-- input-group.blade.php
+|       |   |   |   |-- input-states.blade.php
+|       |   |   |   |-- radio-buttons.blade.php
+|       |   |   |   |-- select-inputs.blade.php
+|       |   |   |   |-- text-area-inputs.blade.php
+|       |   |   |   `-- toggle-switch.blade.php
+|       |   |   |-- input
+|       |   |   |   `-- radio.blade.php
+|       |   |   `-- select
+|       |   |       `-- multiple-select.blade.php
+|       |   |-- header
+|       |   |   |-- notification-dropdown.blade.php
+|       |   |   `-- user-dropdown.blade.php
+|       |   |-- profile
+|       |   |   |-- address-card.blade.php
+|       |   |   |-- personal-info-card.blade.php
+|       |   |   `-- profile-card.blade.php
+|       |   |-- tables
+|       |   |   `-- basic-tables
+|       |   |       |-- basic-tables-five.blade.php
+|       |   |       |-- basic-tables-four.blade.php
+|       |   |       |-- basic-tables-one.blade.php
+|       |   |       |-- basic-tables-three.blade.php
+|       |   |       `-- basic-tables-two.blade.php
+|       |   `-- ui
+|       |       |-- alert.blade.php
+|       |       |-- avatar.blade.php
+|       |       |-- badge.blade.php
+|       |       |-- button.blade.php
+|       |       |-- modal.blade.php
+|       |       `-- youtube-embed.blade.php
+|       |-- layouts
+|       |   |-- app-header.blade.php
+|       |   |-- app.blade.php
+|       |   |-- backdrop.blade.php
+|       |   |-- fullscreen-layout.blade.php
+|       |   |-- sidebar-widget.blade.php
+|       |   `-- sidebar.blade.php
+|       `-- pages
+|           |-- auth
+|           |   |-- signin.blade.php
+|           |   `-- signup.blade.php
+|           |-- blank.blade.php
+|           |-- calender.blade.php
+|           |-- chart
+|           |   |-- bar-chart.blade.php
+|           |   `-- line-chart.blade.php
+|           |-- dashboard
+|           |   `-- ecommerce.blade.php
+|           |-- errors
+|           |   `-- error-404.blade.php
+|           |-- form
+|           |   `-- form-elements.blade.php
+|           |-- profile.blade.php
+|           |-- tables
+|           |   `-- basic-tables.blade.php
+|           `-- ui-elements
+|               |-- alerts.blade.php
+|               |-- avatars.blade.php
+|               |-- badges.blade.php
+|               |-- buttons.blade.php
+|               |-- images.blade.php
+|               `-- videos.blade.php
+|-- routes
+|   |-- console.php
+|   `-- web.php
+|-- structure.txt
+|-- stubs
+|   `-- nwidart-stubs
+|       |-- action-invoke.stub
+|       |-- action.stub
+|       |-- assets
+|       |   |-- js
+|       |   |   `-- app.stub
+|       |   `-- sass
+|       |       `-- app.stub
+|       |-- cast.stub
+|       |-- channel.stub
+|       |-- class-invoke.stub
+|       |-- class.stub
+|       |-- command.stub
+|       |-- component-class.stub
+|       |-- component-view.stub
+|       |-- composer.stub
+|       |-- controller-api.stub
+|       |-- controller-inertia.stub
+|       |-- controller-plain.stub
+|       |-- controller.invokable.stub
+|       |-- controller.stub
+|       |-- enum.stub
+|       |-- event-provider.stub
+|       |-- event.stub
+|       |-- exception-render-report.stub
+|       |-- exception-render.stub
+|       |-- exception-report.stub
+|       |-- exception.stub
+|       |-- factory.stub
+|       |-- helper-invoke.stub
+|       |-- helper.stub
+|       |-- inertia
+|       |   |-- app-react.stub
+|       |   |-- app-svelte.stub
+|       |   |-- app-vue.stub
+|       |   |-- component-react.stub
+|       |   |-- component-svelte.stub
+|       |   |-- component-vue.stub
+|       |   |-- page-react.stub
+|       |   |-- page-svelte.stub
+|       |   `-- page-vue.stub
+|       |-- interface.stub
+|       |-- job-queued.stub
+|       |-- job.stub
+|       |-- json.stub
+|       |-- listener-duck.stub
+|       |-- listener-queued-duck.stub
+|       |-- listener-queued.stub
+|       |-- listener.stub
+|       |-- mail.stub
+|       |-- middleware
+|       |   `-- handle-inertia-requests.stub
+|       |-- middleware.stub
+|       |-- migration
+|       |   |-- add.stub
+|       |   |-- create.stub
+|       |   |-- delete.stub
+|       |   |-- drop.stub
+|       |   `-- plain.stub
+|       |-- model.stub
+|       |-- notification.stub
+|       |-- observer.stub
+|       |-- package.stub
+|       |-- policy.plain.stub
+|       |-- provider.stub
+|       |-- replacement.stub
+|       |-- repository-invoke.stub
+|       |-- repository.stub
+|       |-- request.stub
+|       |-- resource-collection.stub
+|       |-- resource.stub
+|       |-- route-provider.stub
+|       |-- routes
+|       |   |-- api.stub
+|       |   `-- web.stub
+|       |-- rule.implicit.stub
+|       |-- rule.stub
+|       |-- scaffold
+|       |   |-- config.stub
+|       |   `-- provider.stub
+|       |-- scope.stub
+|       |-- seeder.stub
+|       |-- service-invoke.stub
+|       |-- service.stub
+|       |-- tests
+|       |   |-- feature.stub
+|       |   `-- unit.stub
+|       |-- trait.stub
+|       |-- view.stub
+|       |-- views
+|       |   |-- index.stub
+|       |   `-- master.stub
+|       `-- vite.stub
+|-- tailadmin-laravel.png
+|-- tests
+|   |-- Feature
+|   |   `-- ExampleTest.php
+|   |-- Pest.php
+|   |-- TestCase.php
+|   `-- Unit
+|       `-- ExampleTest.php
+`-- vite.config.js
+
+95 directories, 308 files

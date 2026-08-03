@@ -130,5 +130,5 @@
 </body>
 
 @stack('scripts')
-
+@yield('vendor-scripts')
 </html>

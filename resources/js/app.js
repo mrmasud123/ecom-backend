@@ -9,8 +9,10 @@ import 'flatpickr/dist/flatpickr.min.css';
 import { Calendar } from '@fullcalendar/core';
 import $ from 'jquery';
 window.$ = window.jQuery = $;
-
-
+import '@iconify/iconify'
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+window.Swal = Swal;
 
 window.Alpine = Alpine;
 window.ApexCharts = ApexCharts;

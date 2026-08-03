@@ -1,10 +1,20 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 
+Route::get('/auth/google/redirect', [AuthController::class, 'googleRedirect'])->name('auth.google.redirect');
+Route::get('/auth/google/callback', [AuthController::class, 'googleCallback'])->name('auth.google.callback');
+Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::middleware(['auth:sanctum'])->post('/logout', [AuthController::class, 'logout'])->name('logout');
+//Route::get('/signup', [AuthController::class, 'signingPage'])->name('signup');
+//Route::post('/register', [AuthController::class, 'register'])->name('register');
 // dashboard pages
-Route::get('/', function () {
+
+
+Route::middleware(['auth:sanctum'])->get('/', function () {
     return view('pages.dashboard.ecommerce', ['title' => 'E-commerce Dashboard']);
 })->name('dashboard');
 
@@ -50,13 +60,13 @@ Route::get('/bar-chart', function () {
 
 
 // authentication pages
-Route::get('/signin', function () {
-    return view('pages.auth.signin', ['title' => 'Sign In']);
-})->name('signin');
-
-Route::get('/signup', function () {
-    return view('pages.auth.signup', ['title' => 'Sign Up']);
-})->name('signup');
+//Route::get('/signin', function () {
+//    return view('auth.signup', ['title' => 'Sign In']);
+//})->name('signin');
+//
+//Route::get('/signup', function () {
+//    return view('pages.auth.signup', ['title' => 'Sign Up']);
+//})->name('signup');
 
 // ui elements pages
 Route::get('/alerts', function () {

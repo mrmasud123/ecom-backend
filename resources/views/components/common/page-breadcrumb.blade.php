@@ -1,38 +1,69 @@
-@props(['pageTitle' => 'Page'])
+@props(['pageTitle' => []])
+
+@php
+    $breadcrumbs = is_array($pageTitle) ? $pageTitle : [$pageTitle];
+@endphp
 
 <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+
+    <!-- Page Title (Last Item) -->
     <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90">
-        {{ $pageTitle }}
+        {{ end($breadcrumbs)['name'] }}
     </h2>
+
+    <!-- Breadcrumb -->
     <nav>
-        <ol class="flex items-center gap-1.5">
-            <li>
-                <a
-                    class="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400"
-                    href="{{ url('/') }}"
-                >
+        <ol class="flex items-center gap-1.5 flex-wrap">
+
+            <!-- Home -->
+            <li class="flex items-center gap-1.5">
+                <a class="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                   href="{{ url('/') }}">
                     Home
-                    <svg
-                        class="stroke-current"
-                        width="17"
-                        height="16"
-                        viewBox="0 0 17 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M6.0765 12.667L10.2432 8.50033L6.0765 4.33366"
-                            stroke=""
-                            stroke-width="1.2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                    </svg>
                 </a>
+                <span class="text-gray-400">/</span>
             </li>
-            <li class="text-sm text-gray-800 dark:text-white/90">
-                {{ $pageTitle }}
-            </li>
+
+            <!-- Dynamic Breadcrumbs -->
+            @foreach($breadcrumbs as $index => $item)
+                @if ($loop->last)
+                    <li class="flex items-center gap-1.5">
+                        @if ($index != count($breadcrumbs) - 1)
+                            <span class="text-sm text-gray-500 dark:text-gray-400">
+                            {{ $item['name'] }}
+                        </span>
+                            <span class="text-gray-400">/</span>
+                        @else
+                            <!-- Active -->
+                            <span class="text-sm text-gray-800 dark:text-white/90 font-medium">
+                            {{ $item['name'] }}
+                        </span>
+                        @endif
+
+                    </li>
+                @else
+                    <a class="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                       href="{{ url($item['link']) }}">
+                        <li class="flex items-center gap-1.5">
+                            @if ($index != count($breadcrumbs) - 1)
+                                <span class="text-sm text-gray-500 dark:text-gray-400">
+                            {{ $item['name'] }}
+                        </span>
+                                <span class="text-gray-400">/</span>
+                            @else
+                                <!-- Active -->
+                                <span class="text-sm text-gray-800 dark:text-white/90 font-medium">
+                            {{ $item['name'] }}
+                        </span>
+                            @endif
+
+                        </li>
+                    </a>
+
+                @endif
+
+            @endforeach
+
         </ol>
     </nav>
 </div>

@@ -2,6 +2,10 @@
 
 namespace Modules\Product\Providers;
 
+use Modules\Product\Repositories\CategoryRepository;
+use Modules\Product\Repositories\Interfaces\CategoryRepositoryInterface;
+use Modules\Product\Repositories\Interfaces\ProductRepositoryInterface;
+use Modules\Product\Repositories\ProductRepository;
 use Nwidart\Modules\Support\ModuleServiceProvider;
 use Illuminate\Console\Scheduling\Schedule;
 
@@ -29,14 +33,22 @@ class ProductServiceProvider extends ModuleServiceProvider
      *
      * @var string[]
      */
+
+
     protected array $providers = [
         EventServiceProvider::class,
         RouteServiceProvider::class,
     ];
 
+    public function register(): void
+    {
+        parent::register();
+        $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
+        $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+    }
     /**
      * Define module schedules.
-     * 
+     *
      * @param $schedule
      */
     // protected function configureSchedules(Schedule $schedule): void
