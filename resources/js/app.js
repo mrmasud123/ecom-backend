@@ -5,6 +5,7 @@ import ApexCharts from 'apexcharts';
 // flatpickr
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import 'iconify-icon';
 // FullCalendar
 import { Calendar } from '@fullcalendar/core';
 import $ from 'jquery';
@@ -12,6 +13,7 @@ window.$ = window.jQuery = $;
 import '@iconify/iconify'
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import Iconify from "@iconify/iconify";
 window.Swal = Swal;
 
 window.Alpine = Alpine;

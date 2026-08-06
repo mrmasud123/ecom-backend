@@ -2,7 +2,11 @@
 
 namespace Modules\Product\Providers;
 
+use Modules\Product\Repositories\AttributeRepository;
+use Modules\Product\Repositories\BrandRepository;
 use Modules\Product\Repositories\CategoryRepository;
+use Modules\Product\Repositories\Interfaces\AttributeRepositoryInterface;
+use Modules\Product\Repositories\Interfaces\BrandRepositoryInterface;
 use Modules\Product\Repositories\Interfaces\CategoryRepositoryInterface;
 use Modules\Product\Repositories\Interfaces\ProductRepositoryInterface;
 use Modules\Product\Repositories\ProductRepository;
@@ -45,6 +49,8 @@ class ProductServiceProvider extends ModuleServiceProvider
         parent::register();
         $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+        $this->app->bind(BrandRepositoryInterface::class, BrandRepository::class);
+        $this->app->bind(AttributeRepositoryInterface::class, AttributeRepository::class);
     }
     /**
      * Define module schedules.

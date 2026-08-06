@@ -58,9 +58,11 @@ class Product extends Model implements HasMedia
 
     protected static function booted(): void
     {
-        
+
         static::saved(fn () => Cache::tags(['products'])->flush());
         static::deleted(fn () => Cache::tags(['products'])->flush());
     }
+
+
 }
 

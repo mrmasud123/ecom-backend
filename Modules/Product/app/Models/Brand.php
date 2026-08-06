@@ -17,4 +17,8 @@ class Brand extends Model implements HasMedia
     {
         $this->addMediaCollection('logo')->singleFile();
     }
+
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
 }

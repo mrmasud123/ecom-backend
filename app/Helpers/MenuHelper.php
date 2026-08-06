@@ -19,7 +19,77 @@ class MenuHelper
                 'name' => 'Product Management',
                 'subItems' => [
                     ['icon' => 'lucide:box', 'name' => 'Products', 'path' => '/products'],
-                    ['icon' => 'lucide:box', 'name' => 'Categories', 'path' => '/categories'],
+                    ['icon' => 'lucide:tag', 'name' => 'Categories', 'path' => '/categories'],
+                    ['icon' => 'lucide:award', 'name' => 'Brands', 'path' => '/brands'],
+                    ['icon' => 'lucide:list-tree', 'name' => 'Attributes', 'path' => '/attributes'],
+                    ['icon' => 'lucide:layers', 'name' => 'Product Variants', 'path' => '/product-variants'],
+                    ['icon' => 'lucide:star', 'name' => 'Reviews', 'path' => '/reviews'],
+                ],
+            ],
+            [
+                'icon' => 'lucide:warehouse',
+                'name' => 'Inventory',
+                'subItems' => [
+                    ['icon' => 'lucide:boxes', 'name' => 'Stock Overview', 'path' => '/inventory'],
+                    ['icon' => 'lucide:arrow-left-right', 'name' => 'Stock Adjustments', 'path' => '/inventory/adjustments'],
+                    ['icon' => 'lucide:truck', 'name' => 'Suppliers', 'path' => '/suppliers'],
+                    ['icon' => 'lucide:clipboard-list', 'name' => 'Purchase Orders', 'path' => '/purchase-orders'],
+                ],
+            ],
+            [
+                'icon' => 'lucide:receipt',
+                'name' => 'Order Management',
+                'subItems' => [
+                    ['icon' => 'lucide:shopping-bag', 'name' => 'Orders', 'path' => '/orders'],
+                    ['icon' => 'lucide:rotate-ccw', 'name' => 'Returns / Refunds', 'path' => '/returns'],
+                    ['icon' => 'lucide:credit-card', 'name' => 'Payments', 'path' => '/payments'],
+                    ['icon' => 'lucide:truck', 'name' => 'Shipments', 'path' => '/shipments'],
+                ],
+            ],
+            [
+                'icon' => 'lucide:users',
+                'name' => 'Customer Management',
+                'subItems' => [
+                    ['icon' => 'lucide:user', 'name' => 'Customers', 'path' => '/customers'],
+                    ['icon' => 'lucide:user-cog', 'name' => 'Customer Groups', 'path' => '/customer-groups'],
+                    ['icon' => 'lucide:message-circle', 'name' => 'Support Tickets', 'path' => '/support-tickets'],
+                ],
+            ],
+            [
+                'icon' => 'lucide:megaphone',
+                'name' => 'Marketing',
+                'subItems' => [
+                    ['icon' => 'lucide:ticket', 'name' => 'Coupons', 'path' => '/coupons'],
+                    ['icon' => 'lucide:percent', 'name' => 'Discounts / Campaigns', 'path' => '/discounts'],
+                    ['icon' => 'lucide:image', 'name' => 'Banners / Sliders', 'path' => '/banners'],
+                    ['icon' => 'lucide:mail', 'name' => 'Newsletters', 'path' => '/newsletters'],
+                ],
+            ],
+            [
+                'icon' => 'lucide:bar-chart-3',
+                'name' => 'Reports',
+                'subItems' => [
+                    ['icon' => 'lucide:trending-up', 'name' => 'Sales Report', 'path' => '/reports/sales'],
+                    ['icon' => 'lucide:package-search', 'name' => 'Inventory Report', 'path' => '/reports/inventory'],
+                    ['icon' => 'lucide:users-round', 'name' => 'Customer Report', 'path' => '/reports/customers'],
+                ],
+            ],
+            [
+                'icon' => 'lucide:shield',
+                'name' => 'User & Access',
+                'subItems' => [
+                    ['icon' => 'lucide:user-cog', 'name' => 'Admin Users', 'path' => '/admin-users'],
+                    ['icon' => 'lucide:key', 'name' => 'Roles & Permissions', 'path' => '/roles-permissions'],
+                ],
+            ],
+            [
+                'icon' => 'lucide:settings',
+                'name' => 'Settings',
+                'subItems' => [
+                    ['icon' => 'lucide:store', 'name' => 'Store Settings', 'path' => '/settings/store'],
+                    ['icon' => 'lucide:credit-card', 'name' => 'Payment Gateways', 'path' => '/settings/payment'],
+                    ['icon' => 'lucide:truck', 'name' => 'Shipping Methods', 'path' => '/settings/shipping'],
+                    ['icon' => 'lucide:file-text', 'name' => 'Tax Settings', 'path' => '/settings/tax'],
                 ],
             ],
         ];
