@@ -169,6 +169,108 @@
                     </div>
                 </div>
 
+                {{-- ============ VARIANTS (only relevant when has_variants is true) ============ --}}
+                <div id="variantsCard" class="bg-white dark:bg-white/5 rounded-2xl shadow-lg p-6">
+                    <div class="mb-5 flex items-center justify-between">
+                        <div>
+                            <h3 class="mb-1 text-lg font-semibold text-gray-800 dark:text-white">Variants</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Pick the attributes that apply, then generate combinations.</p>
+                        </div>
+                    </div>
+
+                    {{-- Attribute picker --}}
+                    <div class="mb-6">
+                        <label class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">Attributes for this product</label>
+                        <div class="flex flex-wrap gap-4 rounded-lg border border-gray-200 p-4 dark:border-gray-700">
+                            @forelse($attributes ?? [] as $attribute)
+                                <label class="attribute-checkbox flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                                    <input type="checkbox"
+                                           class="attribute-select h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-700"
+                                           value="{{ $attribute->id }}"
+                                           data-values='@json($attribute->attributeValues->map(fn($v) => ["id" => $v->id, "value" => $v->value]))'
+
+                                    >
+                                    {{ $attribute->name }}
+                                </label>
+                            @empty
+                                <p class="text-xs text-gray-400">No attributes exist yet. <a href="{{ route('attributes.create') }}" class="text-blue-600 hover:underline">Create one first</a>.</p>
+                            @endforelse
+                        </div>
+                    </div>
+
+                    {{-- Value pickers per selected attribute — filled in by JS --}}
+                    <div id="attributeValuesContainer" class="mb-6 space-y-4"></div>
+
+                    <button type="button" id="generateVariantsBtn"
+                            class="mb-6 inline-flex items-center gap-1.5 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-white/10">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                        </svg>
+                        Generate combinations
+                    </button>
+
+                    {{-- Variant rows table --}}
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead>
+                            <tr class="border-b border-gray-200 text-xs uppercase text-gray-400 dark:border-gray-700">
+                                <th class="py-2 pr-1">Combination</th>
+                                <th class="py-2 px-1">SKU</th>
+                                <th class="py-2 px-1">Price</th>
+                                <th class="py-2 px-1">Compare price</th>
+                                <th class="py-2 px-1">Quantity</th>
+                                <th class="py-2 px-1 text-center">Active</th>
+                                <th class="py-2 pl-1">Remove</th>
+                            </tr>
+                            </thead>
+                            <tbody id="variantRows" class="divide-y divide-gray-100 dark:divide-gray-800">
+                            @forelse($product->variants ?? [] as $index => $variant)
+                                <tr class="variant-row" data-variant-id="{{ $variant->id }}">
+                                    <input type="hidden" name="variants[{{ $index }}][id]" value="{{ $variant->id }}">
+                                    <input type="hidden" name="variants[{{ $index }}][attribute_value_ids]" value="{{ $variant->attributeValues->pluck('id')->implode(',') }}">
+                                    <td class="py-2 pr-3 text-gray-700 dark:text-gray-300">
+                                        {{ $variant->attributeValues->pluck('value')->implode(' / ') }}
+                                    </td>
+                                    <td class="py-2 px-3">
+                                        <input type="text" name="variants[{{ $index }}][sku]" value="{{ $variant->sku }}"
+                                               class="h-9 w-32 rounded-md border border-gray-300 bg-transparent px-2 text-sm dark:border-gray-700 dark:text-white">
+                                    </td>
+                                    <td class="py-2 px-3">
+                                        <input type="number" step="0.01" min="0" name="variants[{{ $index }}][price]" value="{{ $variant->price }}" placeholder="{{ $product->price }}"
+                                               class="h-9 w-24 rounded-md border border-gray-300 bg-transparent px-2 text-sm dark:border-gray-700 dark:text-white">
+                                    </td>
+                                    <td class="py-2 px-3">
+                                        <input type="number" step="0.01" min="0" name="variants[{{ $index }}][compare_price]" value="{{ $variant->compare_price }}"
+                                               class="h-9 w-24 rounded-md border border-gray-300 bg-transparent px-2 text-sm dark:border-gray-700 dark:text-white">
+                                    </td>
+                                    <td class="py-2 px-3">
+                                        <input type="number" min="0" name="variants[{{ $index }}][quantity]" value="{{ $variant->quantity }}"
+                                               class="h-9 w-20 rounded-md border border-gray-300 bg-transparent px-2 text-sm dark:border-gray-700 dark:text-white">
+                                    </td>
+                                    <td class="py-2 px-3 text-center">
+                                        <input type="checkbox" name="variants[{{ $index }}][is_active]" value="1" {{ $variant->is_active ? 'checked' : '' }}
+                                        class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-700">
+                                    </td>
+                                    <td class="py-2 pl-3 text-right">
+                                        <button type="button" class="remove-variant-row text-gray-400 hover:text-red-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr id="noVariantsRow">
+                                    <td colspan="7" class="py-6 text-center text-xs text-gray-400">
+                                        Select attributes above and click "Generate combinations" to create variants.
+                                    </td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
                 {{-- SEO --}}
                 <div class="bg-white dark:bg-white/5 rounded-2xl shadow-lg p-6">
                     <h3 class="mb-1 text-lg font-semibold text-gray-800 dark:text-white">Search engine listing</h3>

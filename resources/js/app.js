@@ -1,3 +1,4 @@
+import './jquery-global.js';
 import './bootstrap';
 import Alpine from 'alpinejs';
 import ApexCharts from 'apexcharts';
@@ -8,11 +9,14 @@ import 'flatpickr/dist/flatpickr.min.css';
 import 'iconify-icon';
 // FullCalendar
 import { Calendar } from '@fullcalendar/core';
-import $ from 'jquery';
-window.$ = window.jQuery = $;
+// import $ from 'jquery';
+// window.$ = window.jQuery = $;
 import '@iconify/iconify'
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+
+// import 'select2';
+import 'select2/dist/css/select2.min.css'
 import Iconify from "@iconify/iconify";
 window.Swal = Swal;
 

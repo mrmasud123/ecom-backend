@@ -2,5 +2,6 @@
     "Product": true,
     "Brand": true,
     "Order": true,
-    "Inventory": true
+    "Inventory": true,
+    "Marketing": true
 }

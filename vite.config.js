@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import { glob } from 'glob';
+import path from 'path';
 
 export default defineConfig({
     plugins: [
@@ -19,6 +20,11 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    resolve: {
+        alias: {
+            jquery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.js'),
+        },
+    },
     server: {
         host: '0.0.0.0',
         port: 5173,

@@ -22,6 +22,15 @@ class InventoryServiceProvider extends ModuleServiceProvider
      *
      * @var string[]
      */
+    public function register(): void{
+        parent::register();
+        $this->app->bind(
+            \Modules\Inventory\Repositories\Interfaces\ProductionBatchRepositoryInterface::class,
+            \Modules\Inventory\Repositories\ProductionBatchRepository::class
+        );
+
+        $this->app->singleton(\Modules\Inventory\Services\StockService::class);
+    }
     // protected array $commands = [];
 
     /**
@@ -36,7 +45,7 @@ class InventoryServiceProvider extends ModuleServiceProvider
 
     /**
      * Define module schedules.
-     * 
+     *
      * @param $schedule
      */
     // protected function configureSchedules(Schedule $schedule): void

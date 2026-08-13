@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Cache;
+use Modules\Marketing\Models\Discount;
+use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -40,6 +42,12 @@ class Product extends Model implements HasMedia
     {
         $this->addMediaCollection('images');
     }
+    public function registerMediaConversions(Media|\Spatie\MediaLibrary\MediaCollections\Models\Media|null $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->fit(Fit::Crop, 300, 300)
+            ->nonQueued(); // generate immediately instead of via queue, good for local dev
+    }
 
     public function brand(): BelongsTo
     {
@@ -53,12 +61,15 @@ class Product extends Model implements HasMedia
 
     public function variants(): HasMany
     {
-        return $this->hasMany(ProductVariant::class);
+        return $this->hasMany(ProductVariant::class, 'product_id', 'id');
+    }
+    public function discounts()
+    {
+        return $this->morphToMany(Discount::class, 'discountable')->withTimestamps();
     }
 
     protected static function booted(): void
     {
-
         static::saved(fn () => Cache::tags(['products'])->flush());
         static::deleted(fn () => Cache::tags(['products'])->flush());
     }

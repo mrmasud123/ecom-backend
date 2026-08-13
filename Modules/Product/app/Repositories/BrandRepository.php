@@ -11,6 +11,9 @@ class BrandRepository implements BrandRepositoryInterface
 {
     public function __construct(protected Brand $model) {}
 
+    public function all(){
+        return $this->model->all();
+    }
     public function create(array $data): Brand
     {
         return $this->model->create($data);

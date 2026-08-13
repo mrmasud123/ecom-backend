@@ -10,6 +10,9 @@ class CategoryRepository implements CategoryRepositoryInterface
 {
     public function __construct(protected Category $model) {}
 
+    public function all(){
+        return $this->model->all();
+    }
     public function create(array $data): Category
     {
         return $this->model->create($data);

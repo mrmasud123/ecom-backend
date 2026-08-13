@@ -24,11 +24,10 @@
                 <thead class="bg-gray-50 dark:bg-gray-800">
                 <tr class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                     <th class="px-4 py-3 text-left">Name</th>
-                    <th class="px-4 py-3 text-center">Total Batch</th>
                     <th class="px-4 py-3 text-left">Brand</th>
                     <th class="px-4 py-3 text-left">Category</th>
                     <th class="px-4 py-3 text-left">Product Type</th>
-                    <th class="px-4 py-3 text-right">Action</th>
+                    <th class="px-4 py-3 text-right" style="text-align: right">Action</th>
                 </tr>
                 </thead>
 

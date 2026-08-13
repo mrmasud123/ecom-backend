@@ -11,6 +11,8 @@ interface ProductRepositoryInterface
 
     public function update(Product $product, array $data): Product;
 
+    public function find(int $id) : ?Product;
+
     public function delete(Product $product): bool;
 
     public function syncCategories(Product $product, array $categoryIds): void;

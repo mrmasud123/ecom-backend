@@ -13,8 +13,11 @@ class Attribute extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = [];
+    protected $guarded = [];
 
+    public function attributeValues(){
+        return $this->hasMany(AttributeValue::class);
+    }
     // protected static function newFactory(): AttributeFactory
     // {
     //     // return AttributeFactory::new();

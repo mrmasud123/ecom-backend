@@ -32,14 +32,17 @@ $(function () {
                 name: 'name',
                 render: (data) => `<span class="font-medium text-gray-800 dark:text-white">${data}</span>`
             },
-            {
-                data: 'variants_count',
-                name: 'variants_count',
-                render: (data) => `<span class="inline-flex items-center justify-center h-6 w-6 rounded-md bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-semibold text-xs">${data}</span>`
-            },
+            // {
+            //     data: 'variants_count',
+            //     name: 'variants_count',
+            //     render: (data) => `<span class="inline-flex items-center justify-center h-6 w-6 rounded-md bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-semibold text-xs">${data}</span>`
+            // },
             { data: 'brand', name: 'brand' },
-            { data: 'category', name: 'category' },
-            { data: 'productType', name: 'productType', orderable: false, searchable: false },
+            { data: 'category', name: 'category',
+                render: function (data,type,row){
+                return data;
+            } },
+            { data: 'variants', name: 'variants', orderable: false, searchable: false },
             { data: 'action', name: 'action', orderable: false, searchable: false }
         ],
         rowCallback: (row) => $(row).addClass('hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors'),
@@ -48,7 +51,16 @@ $(function () {
             searchPlaceholder: "Search products..."
         }
     });
+// CORRECT — delegated, works even though buttons are added dynamically after page load
+    $('#productTable').on('click', '.toggle-variants', function () {
+        console.log('Toggling');
+        const $btn = $(this);
+        const $list = $btn.closest('.variant-summary').find('.variant-list');
+        const $icon = $btn.find('svg');
 
+        $list.toggleClass('hidden');
+        $icon.toggleClass('rotate-180');
+    });
     $('#productTable').on('click', '.delete-product', function () {
         const button = $(this);
         const url = button.data('url');

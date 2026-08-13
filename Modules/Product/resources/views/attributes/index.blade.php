@@ -1,4 +1,4 @@
-{{-- Modules/Product/resources/views/attribute/index.blade.php --}}
+
 @extends('layouts.app')
 
 @section('vendor-scripts')
@@ -25,17 +25,17 @@
             </a>
         </div>
 
-        <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 p-4">
+        <div style="overflow-x: auto" class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 p-4">
             <table id="attributeTable" class="datatable w-full text-sm text-gray-700 dark:text-gray-300">
 
                 <thead class="bg-gray-50 dark:bg-gray-800">
                 <tr class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
                     <th class="px-4 py-3 text-left">Name</th>
                     <th class="px-4 py-3 text-left">Slug</th>
-                    <th class="px-4 py-3 text-center">Type</th>
+                    <th class="px-4 py-3 text-center" style="text-align: center">Type</th>
                     <th class="px-4 py-3 text-center">Values</th>
-                    <th class="px-4 py-3 text-center">Status</th>
-                    <th class="px-4 py-3 text-right">Action</th>
+                    <th class="px-4 py-3 text-center" style="text-align: center">Status</th>
+                    <th class="px-4 py-3 text-right" style="text-align: right">Action</th>
                 </tr>
                 </thead>
 

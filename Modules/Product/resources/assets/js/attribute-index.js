@@ -1,7 +1,7 @@
-// Modules/Product/resources/assets/js/attribute-index.js
+
 import 'datatables.net-dt';
 import Swal from 'sweetalert2';
-
+import 'datatables.net-dt/css/dataTables.dataTables.css';
 $(function () {
     const dataUrl = $('#attributeTable').data('url') || '/attributes/data';
 
@@ -31,8 +31,8 @@ $(function () {
                 }
             },
             {
-                data: 'values_count',
-                name: 'values_count',
+                data: 'values',
+                name: 'values',
                 orderable: false,
                 searchable: false,
                 className: 'text-center',

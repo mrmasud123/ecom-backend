@@ -3,7 +3,9 @@
 namespace Modules\Product\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Modules\Product\Http\Requests\StoreAttributeRequest;
 use Modules\Product\Services\AttributeService;
 
 class AttributeController extends Controller
@@ -30,20 +32,29 @@ class AttributeController extends Controller
      */
     public function create()
     {
-        return view('product::create');
+        return view('product::attributes.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {}
+    public function store(StoreAttributeRequest $request): JsonResponse
+    {
+        $attribute = $this->attributeService->store($request->validated());
+
+        return response()->json([
+            'message' => 'Attribute created successfully.',
+            'redirect' => route('attributes.index'),
+            'data' => $attribute,
+        ]);
+    }
 
     /**
      * Show the specified resource.
      */
     public function show($id)
     {
-        return view('product::show');
+//        return view('product::show');
     }
 
     /**

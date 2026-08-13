@@ -1003,3 +1003,141 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
     -moz-appearance: textfield;
 }
+
+
+/*Select2 custom css*/
+/* place in your main app.css, or a dedicated select2-theme.css imported once */
+
+/* ===== Base selection box ===== */
+.select2-container--default .select2-selection--multiple,
+.select2-container--default .select2-selection--single {
+    background-color: white;
+    border: 1px solid rgb(209 213 219); /* gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    min-height: 44px;
+    padding: 4px 8px;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple,
+.select2-container--default.select2-container--open .select2-selection--multiple {
+    border-color: rgb(96 165 250); /* blue-400 */
+    box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
+}
+
+/* ===== Placeholder text ===== */
+.select2-container--default .select2-search--inline .select2-search__field {
+    color: rgb(31 41 55); /* gray-800 */
+}
+
+.select2-container--default .select2-selection__placeholder {
+    color: rgb(156 163 175); /* gray-400 — this is the actual placeholder text color */
+}
+
+/* ===== Selected item "chips" (multi-select) ===== */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: rgb(238 242 255); /* indigo-50 */
+    border: 1px solid rgb(199 210 254); /* indigo-200 */
+    color: rgb(67 56 202); /* indigo-700 */
+    border-radius: 9999px;
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: rgb(99 102 241); /* indigo-500 */
+    margin-right: 4px;
+}
+
+/* ===== Dropdown panel ===== */
+.select2-dropdown {
+    background-color: white;
+    border: 1px solid rgb(209 213 219);
+    border-radius: 0.5rem;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: rgb(79 70 229); /* indigo-600 */
+    color: white;
+}
+
+.select2-search__field {
+    background-color: white;
+    color: rgb(31 41 55);
+}
+
+/* ===== Dark mode ===== */
+.dark .select2-container--default .select2-selection--multiple,
+.dark .select2-container--default .select2-selection--single {
+    background-color: transparent;
+    border-color: rgb(55 65 81); /* gray-700 */
+}
+
+.dark .select2-container--default .select2-search--inline .select2-search__field {
+    color: rgb(229 231 235); /* gray-200 */
+}
+
+.dark .select2-container--default .select2-selection__placeholder {
+    color: rgb(107 114 128); /* gray-500 — visible on dark bg */
+}
+
+.dark .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: rgb(67 56 202 / 0.2);
+    border-color: rgb(129 140 248); /* indigo-400 */
+    color: rgb(199 210 254); /* indigo-200 */
+}
+
+.dark .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: rgb(165 180 252); /* indigo-300 */
+}
+
+.dark .select2-dropdown {
+    background-color: rgb(17 24 39); /* gray-900 */
+    border-color: rgb(55 65 81);
+}
+
+.dark .select2-container--default .select2-results__option {
+    color: rgb(229 231 235);
+}
+
+.dark .select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: rgb(99 102 241); /* indigo-500 */
+    color: white;
+}
+
+.dark .select2-search__field {
+    background-color: rgb(17 24 39);
+    color: white;
+}
+
+
+/*Rocket Modal custom css*/
+#launchModal .stars {
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, white, transparent),
+        radial-gradient(1px 1px at 60px 70px, white, transparent),
+        radial-gradient(1px 1px at 90px 20px, white, transparent),
+        radial-gradient(1px 1px at 130px 50px, white, transparent),
+        radial-gradient(1px 1px at 170px 90px, white, transparent),
+        radial-gradient(1px 1px at 220px 30px, white, transparent);
+    background-size: 240px 100px;
+    opacity: 0.6;
+}
+
+#rocket.launching {
+    transform: translate(-50%, -260px);
+}
+
+#flame.burning {
+    height: 22px;
+    opacity: 1;
+    animation: flicker 0.15s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+    from { transform: scaleY(1); }
+    to { transform: scaleY(1.25); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #rocket, #flame { transition: none !important; animation: none !important; }
+}

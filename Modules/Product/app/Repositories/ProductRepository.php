@@ -15,11 +15,34 @@ class ProductRepository implements ProductRepositoryInterface
         return $this->model->create($data);
     }
 
+//    public function update(Product $product, array $data): Product
+//    {
+//        $product->update($data);
+//
+//        return $product->fresh();
+//    }
+
     public function update(Product $product, array $data): Product
     {
-        $product->update($data);
+        $product->update($this->onlyProductColumns($data));
 
         return $product->fresh();
+    }
+    public function find(int $id): ?Product
+    {
+        return $this->model->find($id);
+    }
+    protected function onlyProductColumns(array $data): array
+    {
+        return collect($data)->only([
+            'name', 'sku', 'slug', 'short_description', 'description',
+            'price', 'compare_price', 'cost_price',
+            'track_quantity', 'quantity', 'allow_backorder',
+            'weight', 'length', 'width', 'height',
+            'brand_id', 'has_variants',
+            'is_active', 'is_featured', 'published_at',
+            'meta_title', 'meta_description',
+        ])->all();
     }
 
     public function delete(Product $product): bool
@@ -44,6 +67,6 @@ class ProductRepository implements ProductRepositoryInterface
             ])
             ->with('brand:id,name')
             ->with('categories:id,name')
-            ->withCount('variants');
+            ->with('variants');
     }
 }

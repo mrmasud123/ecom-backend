@@ -10,9 +10,7 @@ class MenuHelper
             [
                 'icon' => 'lucide:layout-dashboard',
                 'name' => 'Dashboard',
-                'subItems' => [
-                    ['icon' => 'lucide:shopping-cart', 'name' => 'Ecommerce', 'path' => '/'],
-                ],
+                'path' => '/'
             ],
             [
                 'icon' => 'lucide:package',
@@ -32,8 +30,7 @@ class MenuHelper
                 'subItems' => [
                     ['icon' => 'lucide:boxes', 'name' => 'Stock Overview', 'path' => '/inventory'],
                     ['icon' => 'lucide:arrow-left-right', 'name' => 'Stock Adjustments', 'path' => '/inventory/adjustments'],
-                    ['icon' => 'lucide:truck', 'name' => 'Suppliers', 'path' => '/suppliers'],
-                    ['icon' => 'lucide:clipboard-list', 'name' => 'Purchase Orders', 'path' => '/purchase-orders'],
+                    ['icon' => 'lucide:factory', 'name' => 'Stock Production', 'path' => '/production-batches'],
                 ],
             ],
             [
@@ -60,7 +57,7 @@ class MenuHelper
                 'name' => 'Marketing',
                 'subItems' => [
                     ['icon' => 'lucide:ticket', 'name' => 'Coupons', 'path' => '/coupons'],
-                    ['icon' => 'lucide:percent', 'name' => 'Discounts / Campaigns', 'path' => '/discounts'],
+                    ['icon' => 'lucide:percent', 'name' => 'Discounts / Campaigns', 'path' => '/discount'],
                     ['icon' => 'lucide:image', 'name' => 'Banners / Sliders', 'path' => '/banners'],
                     ['icon' => 'lucide:mail', 'name' => 'Newsletters', 'path' => '/newsletters'],
                 ],
